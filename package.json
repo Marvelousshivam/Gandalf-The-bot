@@ -1,0 +1,17 @@
+{
+  "name": "gandalf-the-bot",
+  "version": "1.0.0",
+  "description": "🧙‍♂️ Gandalf the BOT — All-in-one Minecraft Discord Bot for Minecraft WEEK",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.65",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7",
+    "minecraft-data": "^3.117.0"
+  }
+}
