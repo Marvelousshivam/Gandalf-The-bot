@@ -9,11 +9,15 @@ const {
   getMoviePoll,
   getMoviePollVotes,
   voteMoviePoll,
-  endMoviePoll
+  endMoviePoll,
+  getMinecraftEvent,
+  getMinecraftEventRsvps,
+  setMinecraftEventRsvp
 } = require('../database');
 const { getServerStatus } = require('../utils/minecraft-api');
 const { buildStatusDisplay } = require('../systems/serverStatusDisplay');
 const { buildEventEmbed, buildPollEmbed } = require('../systems/movieNightDisplay');
+const { buildMinecraftEventEmbed } = require('../systems/minecraftEventDisplay');
 const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
@@ -244,6 +248,71 @@ module.exports = {
           content: responses[status] || '✅ RSVP updated!',
           ephemeral: true
         });
+      }
+
+      // --- Minecraft Server Events: RSVP Buttons ---
+      if (customId.startsWith('mc_event_rsvp_')) {
+        const parts = customId.split('_'); // ['mc', 'event', 'rsvp', status, eventId]
+        const status = parts[3]; // 'going', 'maybe', 'declined'
+        const eventId = Number(parts[4]);
+
+        const event = getMinecraftEvent(eventId);
+        if (!event) {
+          return interaction.reply({
+            content: '⚠️ This Minecraft server event could not be found or has concluded.',
+            ephemeral: true
+          });
+        }
+
+        setMinecraftEventRsvp(eventId, interaction.user.id, status);
+
+        const rsvps = getMinecraftEventRsvps(eventId);
+        const display = buildMinecraftEventEmbed(event, rsvps);
+
+        await interaction.message.edit(display).catch(() => {});
+
+        const mcResponses = {
+          going: '⚔️ **You\'re on the roster!** Sharpen your sword and prepare your inventory. We\'ll alert you before the gates open!',
+          maybe: '🤔 Marked as **Maybe**! We will keep you posted as launch approaches.',
+          declined: '❌ Marked as **Can\'t Make It**. We hope to see you in the realm next time!'
+        };
+
+        return interaction.reply({
+          content: mcResponses[status] || '✅ RSVP recorded!',
+          ephemeral: true
+        });
+      }
+
+      // --- Minecraft Server Events: Copy IP Button ---
+      if (customId.startsWith('mc_event_copy_ip_')) {
+        const eventId = Number(customId.replace('mc_event_copy_ip_', ''));
+        const event = getMinecraftEvent(eventId);
+        const addr = event ? `${event.address}:${event.port}` : 'Fellowshiptotheend.aternos.me:20974';
+
+        return interaction.reply({
+          content: `📋 **Direct Connect Address:**\n\`${addr}\`\n\n*Copy the line above and paste directly into Minecraft > Multiplayer > Direct Connection!*`,
+          ephemeral: true
+        });
+      }
+
+      // --- Minecraft Server Events: Check Status Button ---
+      if (customId.startsWith('mc_event_check_status_')) {
+        await interaction.deferReply({ ephemeral: true });
+        const eventId = Number(customId.replace('mc_event_check_status_', ''));
+        const event = getMinecraftEvent(eventId);
+        const addr = event ? event.address : 'Fellowshiptotheend.aternos.me';
+        const port = event ? event.port : 20974;
+
+        const status = await getServerStatus(addr, port);
+        if (status.online) {
+          return interaction.editReply({
+            content: `🟢 **The Realm is ONLINE & READY!**\n• **Players Online:** ${status.players.online}/${status.players.max}\n• **Version:** ${status.version || '1.21.x'}\n• **Latency:** \`${status.latency || 45}ms\`\n• **MOTD:** ${status.motd || 'Welcome to Minecraft WEEK'}\n\nJoin now at \`${addr}:${port}\`!`
+          });
+        } else {
+          return interaction.editReply({
+            content: `💤 **The Realm is currently SLEEPING.**\nIt will be booted up for the event showtime at \`${addr}:${port}\`!`
+          });
+        }
       }
 
       // --- Movie Nights: Voting Poll Buttons ---

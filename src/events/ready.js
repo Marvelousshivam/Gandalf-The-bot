@@ -4,6 +4,7 @@ const { getServerStatus } = require('../utils/minecraft-api');
 const { buildStatusDisplay } = require('../systems/serverStatusDisplay');
 const { createMinecraftEmbed } = require('../utils/embedBuilder');
 const { startMovieScheduler } = require('../systems/movieNightScheduler');
+const { startMinecraftEventScheduler } = require('../systems/minecraftEventScheduler');
 const config = require('../../config');
 
 async function updateAllStatusEmbeds(client) {
@@ -73,5 +74,8 @@ module.exports = {
 
     // Initialize Movie Nights reminder & poll auto-resolver
     startMovieScheduler(client);
+
+    // Initialize Minecraft Events reminder & launch countdown scheduler
+    startMinecraftEventScheduler(client);
   }
 };

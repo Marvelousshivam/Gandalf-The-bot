@@ -59,6 +59,11 @@ module.exports = {
         .addChannelOption(opt => opt.setName('channel').setDescription('Movie night channel').addChannelTypes(ChannelType.GuildText).setRequired(true))
     )
     .addSubcommand(sub =>
+      sub.setName('announcement')
+        .setDescription('Set the channel for Minecraft server launches & event announcements')
+        .addChannelOption(opt => opt.setName('channel').setDescription('Announcement channel').addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement).setRequired(true))
+    )
+    .addSubcommand(sub =>
       sub.setName('movierole')
         .setDescription('Set the Movie Host or Movie Night notification ping role')
         .addRoleOption(opt => opt.setName('role').setDescription('Movie role').setRequired(true))
@@ -95,7 +100,7 @@ module.exports = {
         fields: [
           {
             name: '📜 Channels',
-            value: `• **Welcome:** ${cfg.welcome_channel_id ? `<#${cfg.welcome_channel_id}>` : '*Not set*'}\n• **Goodbye:** ${cfg.goodbye_channel_id ? `<#${cfg.goodbye_channel_id}>` : '*Not set*'}\n• **Audit Logs:** ${cfg.log_channel_id ? `<#${cfg.log_channel_id}>` : '*Not set*'}\n• **Server Status:** ${cfg.status_channel_id ? `<#${cfg.status_channel_id}>` : '*Not set*'}\n• **Live Chat Bridge:** ${cfg.live_chat_channel_id ? `<#${cfg.live_chat_channel_id}>` : '*Not set*'}\n• **Movie Nights:** ${cfg.movie_channel_id ? `<#${cfg.movie_channel_id}>` : '*Not set*'}`,
+            value: `• **Welcome:** ${cfg.welcome_channel_id ? `<#${cfg.welcome_channel_id}>` : '*Not set*'}\n• **Announcements:** ${cfg.announcement_channel_id ? `<#${cfg.announcement_channel_id}>` : '*Not set*'}\n• **Goodbye:** ${cfg.goodbye_channel_id ? `<#${cfg.goodbye_channel_id}>` : '*Not set*'}\n• **Audit Logs:** ${cfg.log_channel_id ? `<#${cfg.log_channel_id}>` : '*Not set*'}\n• **Server Status:** ${cfg.status_channel_id ? `<#${cfg.status_channel_id}>` : '*Not set*'}\n• **Live Chat Bridge:** ${cfg.live_chat_channel_id ? `<#${cfg.live_chat_channel_id}>` : '*Not set*'}\n• **Movie Nights:** ${cfg.movie_channel_id ? `<#${cfg.movie_channel_id}>` : '*Not set*'}`,
             inline: false
           },
           {
@@ -191,6 +196,14 @@ module.exports = {
       updateGuildConfig(guildId, 'movie_channel_id', channel.id);
       return interaction.reply({
         embeds: [createSuccessEmbed('Movie Night Channel Assigned', `Screening cards, RSVPs, and showtime reminders will be announced in ${channel}.`)]
+      });
+    }
+
+    if (subcommand === 'announcement') {
+      const channel = interaction.options.getChannel('channel');
+      updateGuildConfig(guildId, 'announcement_channel_id', channel.id);
+      return interaction.reply({
+        embeds: [createSuccessEmbed('Announcement Channel Assigned', `Minecraft server launches and grand events will now be broadcast in ${channel}.`)]
       });
     }
 

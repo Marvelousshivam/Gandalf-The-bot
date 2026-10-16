@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           name: '⛏️ Minecraft Knowledge & Tools',
-          value: '• `/status` — View live Aternos server status, players, and MOTD\n• `/skin <player>` — Inspect 3D player skin & avatar (cracked-aware)\n• `/wiki <query>` — Search the official Minecraft Wiki\n• `/recipe <item>` — View 3x3 crafting grid guide\n• `/enchant <name>` — Look up enchantment mechanics\n• `/potion <name>` — Check potion brewing recipes\n• `/mob <name>` — View mob statistics & drops\n• `/coords` — Nether portal coordinate calculator',
+          value: '• `/mc-event launch <time>` — Announce grand server launch, banner, Discord event & RSVPs\n• `/status` — View live Aternos server status, players, and MOTD\n• `/skin <player>` — Inspect 3D player skin & avatar (cracked-aware)\n• `/wiki <query>` — Search the official Minecraft Wiki\n• `/recipe <item>` — View 3x3 crafting grid guide\n• `/enchant <name>` — Look up enchantment mechanics\n• `/potion <name>` — Check potion brewing recipes\n• `/mob <name>` — View mob statistics & drops\n• `/coords` — Nether portal coordinate calculator',
           inline: false
         },
         {

@@ -166,6 +166,38 @@ try { db.exec('ALTER TABLE movie_events ADD COLUMN genres TEXT;'); } catch (e) {
 try { db.exec('ALTER TABLE movie_events ADD COLUMN director TEXT;'); } catch (e) {}
 try { db.exec('ALTER TABLE movie_events ADD COLUMN trailer_url TEXT;'); } catch (e) {}
 try { db.exec('ALTER TABLE movie_events ADD COLUMN overview TEXT;'); } catch (e) {}
+try { db.exec('ALTER TABLE guild_config ADD COLUMN announcement_channel_id TEXT;'); } catch (e) {}
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS minecraft_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guild_id TEXT NOT NULL,
+    channel_id TEXT NOT NULL,
+    message_id TEXT,
+    discord_event_id TEXT,
+    title TEXT NOT NULL,
+    start_time INTEGER NOT NULL,
+    address TEXT NOT NULL,
+    port INTEGER NOT NULL,
+    version TEXT DEFAULT '1.21.x',
+    theme TEXT DEFAULT 'overworld',
+    host_user_id TEXT NOT NULL,
+    notes TEXT,
+    reminded_1h INTEGER DEFAULT 0,
+    reminded_10m INTEGER DEFAULT 0,
+    status TEXT DEFAULT 'scheduled',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
+
+  CREATE TABLE IF NOT EXISTS minecraft_event_rsvps (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event_id INTEGER NOT NULL,
+    user_id TEXT NOT NULL,
+    status TEXT NOT NULL,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(event_id, user_id)
+  );
+`);
 
 // --- Helper Functions ---
 
@@ -487,6 +519,80 @@ function endMoviePoll(pollId, winnerTitle) {
   `).run(winnerTitle, pollId);
 }
 
+// --- Minecraft Server Events ---
+
+function createMinecraftEvent(guildId, channelId, hostUserId, title, startUnix, address, port, version, theme, notes, discordEventId = null) {
+  const info = db.prepare(`
+    INSERT INTO minecraft_events (
+      guild_id, channel_id, host_user_id, title, start_time,
+      address, port, version, theme, notes, discord_event_id
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(
+    guildId, channelId, hostUserId, title, startUnix,
+    address, port, version, theme, notes, discordEventId
+  );
+  return info.lastInsertRowid;
+}
+
+function updateMinecraftEventMessage(eventId, messageId, discordEventId = null) {
+  if (discordEventId) {
+    db.prepare('UPDATE minecraft_events SET message_id = ?, discord_event_id = ? WHERE id = ?')
+      .run(messageId, discordEventId, eventId);
+  } else {
+    db.prepare('UPDATE minecraft_events SET message_id = ? WHERE id = ?')
+      .run(messageId, eventId);
+  }
+}
+
+function getMinecraftEvent(eventId) {
+  return db.prepare('SELECT * FROM minecraft_events WHERE id = ?').get(eventId);
+}
+
+function getActiveMinecraftEvents(guildId) {
+  return db.prepare(`
+    SELECT * FROM minecraft_events 
+    WHERE guild_id = ? AND status = 'scheduled' 
+    ORDER BY start_time ASC
+  `).all(guildId);
+}
+
+function getUpcomingMinecraftEventsForReminder() {
+  return db.prepare(`
+    SELECT * FROM minecraft_events 
+    WHERE status = 'scheduled'
+  `).all();
+}
+
+function markMinecraftEventReminded(eventId, type) {
+  if (type === '1h') {
+    db.prepare('UPDATE minecraft_events SET reminded_1h = 1 WHERE id = ?').run(eventId);
+  } else if (type === '10m') {
+    db.prepare('UPDATE minecraft_events SET reminded_10m = 1 WHERE id = ?').run(eventId);
+  }
+}
+
+function setMinecraftEventStatus(eventId, status) {
+  db.prepare('UPDATE minecraft_events SET status = ? WHERE id = ?').run(status, eventId);
+}
+
+function cancelMinecraftEvent(eventId) {
+  db.prepare(`UPDATE minecraft_events SET status = 'cancelled' WHERE id = ?`).run(eventId);
+}
+
+function setMinecraftEventRsvp(eventId, userId, status) {
+  db.prepare(`
+    INSERT INTO minecraft_event_rsvps (event_id, user_id, status, updated_at)
+    VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+    ON CONFLICT(event_id, user_id) DO UPDATE SET
+      status = excluded.status,
+      updated_at = CURRENT_TIMESTAMP
+  `).run(eventId, userId, status);
+}
+
+function getMinecraftEventRsvps(eventId) {
+  return db.prepare('SELECT user_id, status FROM minecraft_event_rsvps WHERE event_id = ?').all(eventId);
+}
+
 module.exports = {
   db,
   getGuildConfig,
@@ -530,5 +636,16 @@ module.exports = {
   getActivePolls,
   voteMoviePoll,
   getMoviePollVotes,
-  endMoviePoll
+  endMoviePoll,
+  // Minecraft Events
+  createMinecraftEvent,
+  updateMinecraftEventMessage,
+  getMinecraftEvent,
+  getActiveMinecraftEvents,
+  getUpcomingMinecraftEventsForReminder,
+  markMinecraftEventReminded,
+  setMinecraftEventStatus,
+  cancelMinecraftEvent,
+  setMinecraftEventRsvp,
+  getMinecraftEventRsvps
 };

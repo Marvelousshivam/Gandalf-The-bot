@@ -162,6 +162,9 @@
 
 | Command | Arguments | Description |
 | :--- | :--- | :--- |
+| `/mc-event launch` | `time` *(required)*, `title`, `theme`, `ping`, `channel` | Announce server launch with Canvas banner, Discord event & RSVPs |
+| `/mc-event list` | *none* | View all active scheduled Minecraft server launch events |
+| `/mc-event cancel` | `id` *(required)* | Cancel a scheduled Minecraft server launch event |
 | `/status` | *none* | Check live Minecraft server latency, player count, and MOTD |
 | `/recipe` | `item` *(required)* | Generate a 3x3 crafting grid image for any item |
 | `/skin` | `username` *(required)*, `type` *(mojang / tlauncher)* | Render and inspect player skins and capes in 2D |
