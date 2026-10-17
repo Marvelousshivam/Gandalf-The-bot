@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Healing (Instant Health)",
+    "base": "Awkward Potion",
+    "ingredient": "Glistering Melon Slice",
+    "effect": "Instantly heals 4 Hearts (Level I) or 8 Hearts (Level II). Harms undead mobs!",
+    "upgrades": "Glowstone Dust (Tier II)"
+  },
+  {
+    "name": "Regeneration",
+    "base": "Awkward Potion",
+    "ingredient": "Ghast Tear",
+    "effect": "Restores health over 45s (0.9 hearts every 2.5 seconds).",
+    "upgrades": "Redstone (Duration 1:30) | Glowstone (Regen II for 0:22)"
+  },
+  {
+    "name": "Strength",
+    "base": "Awkward Potion",
+    "ingredient": "Blaze Powder",
+    "effect": "Increases melee damage by +3 (Level I) or +6 (Level II).",
+    "upgrades": "Redstone (8:00) | Glowstone (Strength II for 1:30)"
+  },
+  {
+    "name": "Fire Resistance",
+    "base": "Awkward Potion",
+    "ingredient": "Magma Cream",
+    "effect": "Complete immunity to fire, lava, and blaze fireballs for 3:00.",
+    "upgrades": "Redstone Dust (Extends to 8:00)"
+  },
+  {
+    "name": "Swiftness (Speed)",
+    "base": "Awkward Potion",
+    "ingredient": "Sugar",
+    "effect": "Increases walking speed by +20% (Level I) or +40% (Level II).",
+    "upgrades": "Redstone (8:00) | Glowstone (Speed II for 1:30)"
+  },
+  {
+    "name": "Night Vision",
+    "base": "Awkward Potion",
+    "ingredient": "Golden Carrot",
+    "effect": "Full brightness in darkness and clear vision underwater for 3:00.",
+    "upgrades": "Redstone Dust (Extends to 8:00)"
+  },
+  {
+    "name": "Invisibility",
+    "base": "Night Vision Potion",
+    "ingredient": "Fermented Spider Eye",
+    "effect": "Renders the player model invisible for 3:00 (armor and held items remain visible).",
+    "upgrades": "Redstone Dust (Extends to 8:00)"
+  },
+  {
+    "name": "Water Breathing",
+    "base": "Awkward Potion",
+    "ingredient": "Pufferfish",
+    "effect": "Oxygen bar does not deplete while submerged underwater for 3:00.",
+    "upgrades": "Redstone Dust (Extends to 8:00)"
+  },
+  {
+    "name": "Slow Falling",
+    "base": "Awkward Potion",
+    "ingredient": "Phantom Membrane",
+    "effect": "Player glides gently downwards and is completely immune to fall damage for 1:30.",
+    "upgrades": "Redstone Dust (Extends to 4:00)"
+  }
+]

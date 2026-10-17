@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Mending",
+    "maxLevel": 1,
+    "items": "All equipment with durability",
+    "description": "Repairs durability when collecting experience orbs (2 durability per XP point).",
+    "conflicts": "Infinity (on Bows)"
+  },
+  {
+    "name": "Unbreaking",
+    "maxLevel": 3,
+    "items": "All equipment with durability",
+    "description": "Gives a chance for durability not to be consumed on use (Level 3 quadruples item lifetime).",
+    "conflicts": "None"
+  },
+  {
+    "name": "Fortune",
+    "maxLevel": 3,
+    "items": "Pickaxe, Axe, Shovel, Hoe",
+    "description": "Increases block drop rates for ores, crops, and materials (up to 4x drops at Level 3).",
+    "conflicts": "Silk Touch"
+  },
+  {
+    "name": "Silk Touch",
+    "maxLevel": 1,
+    "items": "Pickaxe, Axe, Shovel, Hoe",
+    "description": "Causes mined blocks to drop as themselves instead of their usual items (e.g. glass, ice, ore blocks).",
+    "conflicts": "Fortune"
+  },
+  {
+    "name": "Sharpness",
+    "maxLevel": 5,
+    "items": "Sword, Axe",
+    "description": "Increases melee damage against all mobs (+3 damage at Level 5).",
+    "conflicts": "Smite, Bane of Arthropods"
+  },
+  {
+    "name": "Smite",
+    "maxLevel": 5,
+    "items": "Sword, Axe",
+    "description": "Substantially increases damage against undead mobs (Zombies, Skeletons, Withers, Phantoms).",
+    "conflicts": "Sharpness, Bane of Arthropods"
+  },
+  {
+    "name": "Looting",
+    "maxLevel": 3,
+    "items": "Sword",
+    "description": "Increases mob drops and rare drop chances from killed monsters.",
+    "conflicts": "None"
+  },
+  {
+    "name": "Protection",
+    "maxLevel": 4,
+    "items": "Armor (Helmet, Chestplate, Leggings, Boots)",
+    "description": "Reduces all damage taken by 4% per level (up to 64% total with a full set of Protection IV).",
+    "conflicts": "Fire Protection, Blast Protection, Projectile Protection"
+  },
+  {
+    "name": "Feather Falling",
+    "maxLevel": 4,
+    "items": "Boots",
+    "description": "Reduces fall damage by up to 48% at Level 4 and reduces ender pearl damage.",
+    "conflicts": "None"
+  },
+  {
+    "name": "Infinity",
+    "maxLevel": 1,
+    "items": "Bow",
+    "description": "Shooting regular arrows consumes no arrows as long as at least 1 arrow is in the inventory.",
+    "conflicts": "Mending"
+  },
+  {
+    "name": "Riptide",
+    "maxLevel": 3,
+    "items": "Trident",
+    "description": "Flings the player forward like a human missile when in water or rain.",
+    "conflicts": "Loyalty, Channeling"
+  },
+  {
+    "name": "Efficiency",
+    "maxLevel": 5,
+    "items": "Pickaxe, Axe, Shovel, Hoe, Shears",
+    "description": "Increases mining and block breaking speed dramatically.",
+    "conflicts": "None"
+  }
+]

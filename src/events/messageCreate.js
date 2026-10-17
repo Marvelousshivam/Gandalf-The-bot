@@ -1,8 +1,10 @@
-const { Events } = require('discord.js');
+const { Events, EmbedBuilder } = require('discord.js');
 const { handleAutoMod } = require('../systems/autoMod');
 const { addXp, getUserXp, getGuildConfig } = require('../database');
 const { getRankTitle } = require('../systems/xpSystem');
 const { askGandalfAI } = require('../utils/ai');
+const { generateGrandAdvancementBanner } = require('../systems/advancementImage');
+const advancementsData = require('../data/advancements.json');
 const cooldown = require('../utils/cooldown');
 const config = require('../../config');
 
@@ -152,8 +154,60 @@ module.exports = {
             tribute = playerAdvTributes[Math.floor(Math.random() * playerAdvTributes.length)];
           }
 
-          // No emojis so Minecraft chat shows clean, readable text
-          return message.channel.send(`${tribute}`).catch(() => {});
+          // Determine advancement tier from text or dataset
+          let advType = 'task';
+          if (/completed the challenge/i.test(fullText)) advType = 'challenge';
+          else if (/reached the goal/i.test(fullText)) advType = 'goal';
+
+          const meta = advancementsData[advTitle] || {};
+          const finalType = meta.type || advType;
+          const finalDesc = meta.desc || 'An epic milestone achieved in Minecraft WEEK!';
+          const iconItem = meta.icon || 'Diamond';
+
+          try {
+            // Generate detailed Minecraft Canvas Banner
+            const { attachment } = await generateGrandAdvancementBanner({
+              player: advPlayer,
+              title: advTitle,
+              type: finalType,
+              description: finalDesc,
+              icon: iconItem,
+              quote: tribute
+            });
+
+            const embedColor = finalType === 'challenge' ? 0xAA00AA : (finalType === 'goal' ? 0x55FF55 : 0xFFAA00);
+            const embed = new EmbedBuilder()
+              .setColor(embedColor)
+              .setTitle(`🏆 Minecraft Advancement Unlocked!`)
+              .setDescription(
+                `**${advPlayer}** has achieved **[ ${advTitle} ]**!\n\n` +
+                `> *"${tribute}"*\n` +
+                `— **Gandalf the Grey** 🧙‍♂️`
+              )
+              .setImage('attachment://minecraft-advancement-banner.png')
+              .setFooter({ text: 'Minecraft WEEK Advancement Broadcast' })
+              .setTimestamp();
+
+            // Check if dedicated advancement channel is configured
+            const targetChannelId = guildConfig.advancement_channel_id;
+            let targetChannel = null;
+            if (targetChannelId) {
+              targetChannel = message.guild.channels.cache.get(targetChannelId);
+            }
+
+            if (targetChannel && targetChannel.id !== message.channel.id) {
+              // Post grand banner in the dedicated showcase channel
+              await targetChannel.send({ embeds: [embed], files: [attachment] }).catch(err => console.error('Failed to post to advancement channel:', err));
+              // Post clean text in live-chat so in-game players also see the bridge shout
+              return message.channel.send(`A legendary deed, ${advPlayer}! Unlocking [${advTitle}] proves your valor! See the realm celebration in <#${targetChannel.id}>!`).catch(() => {});
+            } else {
+              // Post banner directly in current live-chat channel
+              return message.channel.send({ embeds: [embed], files: [attachment] }).catch(() => {});
+            }
+          } catch (err) {
+            console.error('Error generating grand advancement banner:', err);
+            return message.channel.send(`${tribute}`).catch(() => {});
+          }
         }
       }
 

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Beacon",
+    "output": "1x Beacon",
+    "grid": [
+      ["Glass", "Glass", "Glass"],
+      ["Glass", "Nether Star", "Glass"],
+      ["Obsidian", "Obsidian", "Obsidian"]
+    ],
+    "notes": "Requires a pyramid of Iron, Gold, Diamond, or Netherite blocks to activate."
+  },
+  {
+    "name": "Netherite Ingot",
+    "output": "1x Netherite Ingot",
+    "grid": [
+      ["Netherite Scrap", "Netherite Scrap", "Netherite Scrap"],
+      ["Netherite Scrap", "Gold Ingot", "Gold Ingot"],
+      ["Gold Ingot", "Gold Ingot", " "]
+    ],
+    "notes": "Shapeless recipe. Combine 4 Netherite Scraps + 4 Gold Ingots."
+  },
+  {
+    "name": "Eye of Ender",
+    "output": "1x Eye of Ender",
+    "grid": [
+      [" ", " ", " "],
+      ["Ender Pearl", "Blaze Powder", " "],
+      [" ", " ", " "]
+    ],
+    "notes": "Shapeless. Used to locate and activate End Portals in Strongholds."
+  },
+  {
+    "name": "Enchanting Table",
+    "output": "1x Enchanting Table",
+    "grid": [
+      [" ", "Book", " "],
+      ["Diamond", "Obsidian", "Diamond"],
+      ["Obsidian", "Obsidian", "Obsidian"]
+    ],
+    "notes": "Place 15 Bookshelves around it with a 1-block air gap for maximum Level 30 enchantments."
+  },
+  {
+    "name": "Anvil",
+    "output": "1x Anvil",
+    "grid": [
+      ["Iron Block", "Iron Block", "Iron Block"],
+      [" ", "Iron Ingot", " "],
+      ["Iron Ingot", "Iron Ingot", "Iron Ingot"]
+    ],
+    "notes": "Used to repair, combine enchantments, and rename gear using XP levels."
+  },
+  {
+    "name": "Brewing Stand",
+    "output": "1x Brewing Stand",
+    "grid": [
+      [" ", "Blaze Rod", " "],
+      ["Cobblestone", "Cobblestone", "Cobblestone"],
+      [" ", " ", " "]
+    ],
+    "notes": "Requires Blaze Powder in the top-left fuel slot to operate."
+  },
+  {
+    "name": "Piston",
+    "output": "1x Piston",
+    "grid": [
+      ["Wood Plank", "Wood Plank", "Wood Plank"],
+      ["Cobblestone", "Iron Ingot", "Cobblestone"],
+      ["Cobblestone", "Redstone", "Cobblestone"]
+    ],
+    "notes": "Combine with a Slimeball in a crafting grid to make a Sticky Piston."
+  },
+  {
+    "name": "Shield",
+    "output": "1x Shield",
+    "grid": [
+      ["Wood Plank", "Iron Ingot", "Wood Plank"],
+      ["Wood Plank", "Wood Plank", "Wood Plank"],
+      [" ", "Wood Plank", " "]
+    ],
+    "notes": "Blocks 100% of melee and projectile damage when held up with Right Click."
+  }
+]

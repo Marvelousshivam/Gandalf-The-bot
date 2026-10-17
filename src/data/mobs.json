@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Creeper",
+    "type": "Hostile",
+    "health": "20 HP (10 Hearts)",
+    "attack": "Explosion (up to 49 damage at point blank)",
+    "drops": "Gunpowder (0-2), Music Disc (if killed by a skeleton arrow)",
+    "behavior": "Silently approaches players and hisses for 1.5s before detonating. Afraid of Cats and Ocelots!"
+  },
+  {
+    "name": "Enderman",
+    "type": "Neutral",
+    "health": "40 HP (20 Hearts)",
+    "attack": "7 damage (Easy), 10.5 damage (Normal), 15 damage (Hard)",
+    "drops": "Ender Pearl (0-1)",
+    "behavior": "Teleports when attacked or when looked in the eyes. Damaged by water and rain. Wear a Carved Pumpkin to look safely."
+  },
+  {
+    "name": "Warden",
+    "type": "Hostile (Boss-Tier)",
+    "health": "500 HP (250 Hearts)",
+    "attack": "30 melee damage (Normal), Sonic Boom ranged attack (15 damage ignoring armor/shields)",
+    "drops": "Sculk Catalyst (1)",
+    "behavior": "Completely blind; navigates via sound and vibrations. Can sniff out hiding players within 49 blocks. Do NOT fight unless prepared!"
+  },
+  {
+    "name": "Ender Dragon",
+    "type": "Boss",
+    "health": "200 HP (100 Hearts)",
+    "attack": "Dragon Breath, Perching shockwave, Melee charge",
+    "drops": "Dragon Egg (1), 12,000 XP (first kill)",
+    "behavior": "Ruler of the End. Heals constantly from End Crystals atop obsidian towers. Shoot crystals with arrows first."
+  },
+  {
+    "name": "Wither",
+    "type": "Boss",
+    "health": "300 HP (Java) / 600 HP (Bedrock)",
+    "attack": "Wither Skulls, Wither Effect II damage over time",
+    "drops": "Nether Star (1) — Used to craft Beacons",
+    "behavior": "Summoned with 4 Soul Sand (T-shape) and 3 Wither Skeleton Skulls. Becomes immune to arrows at 50% health."
+  },
+  {
+    "name": "Blaze",
+    "type": "Hostile",
+    "health": "20 HP (10 Hearts)",
+    "attack": "Tri-burst fireballs (5 damage + burn over time)",
+    "drops": "Blaze Rod (0-1) — Essential for Eyes of Ender and Brewing Stands",
+    "behavior": "Spawns from monster spawners inside Nether Fortresses. Hover and fly. Highly vulnerable to snowballs (3 damage per hit)."
+  },
+  {
+    "name": "Iron Golem",
+    "type": "Utility / Neutral",
+    "health": "100 HP (50 Hearts)",
+    "attack": "7.5 - 21.5 damage (Launches enemies into the air)",
+    "drops": "Iron Ingots (3-5), Poppies (0-2)",
+    "behavior": "Spawns in villages to protect villagers. Can be created with 4 Iron Blocks and 1 Carved Pumpkin."
+  }
+]

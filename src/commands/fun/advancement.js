@@ -43,6 +43,11 @@ module.exports = {
         )
     )
     .addStringOption(opt =>
+      opt.setName('player')
+        .setDescription('Minecraft player name for skin head (e.g. shivamraj616)')
+        .setRequired(false)
+    )
+    .addStringOption(opt =>
       opt.setName('description')
         .setDescription('Optional sub-text or requirement description')
         .setRequired(false)
@@ -56,6 +61,20 @@ module.exports = {
     const type = interaction.options.getString('type') || 'task';
     const icon = interaction.options.getString('icon') || 'diamond';
     const description = interaction.options.getString('description')?.trim() || '';
+    const player = interaction.options.getString('player')?.trim();
+
+    if (player) {
+      const { generateGrandAdvancementBanner } = require('../../systems/advancementImage');
+      const { attachment } = await generateGrandAdvancementBanner({
+        player,
+        title,
+        type,
+        description,
+        icon,
+        quote: `A glorious triumph, ${player}! Truly, adventure runs deep in your blood!`
+      });
+      return interaction.editReply({ files: [attachment] });
+    }
 
     const attachment = await generateAdvancementToast({
       title,

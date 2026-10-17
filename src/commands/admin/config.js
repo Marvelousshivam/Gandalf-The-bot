@@ -64,6 +64,11 @@ module.exports = {
         .addChannelOption(opt => opt.setName('channel').setDescription('Announcement channel').addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement).setRequired(true))
     )
     .addSubcommand(sub =>
+      sub.setName('advancements')
+        .setDescription('Set the channel for Minecraft achievement & advancement celebration banners')
+        .addChannelOption(opt => opt.setName('channel').setDescription('Advancements showcase channel').addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement).setRequired(true))
+    )
+    .addSubcommand(sub =>
       sub.setName('movierole')
         .setDescription('Set the Movie Host or Movie Night notification ping role')
         .addRoleOption(opt => opt.setName('role').setDescription('Movie role').setRequired(true))
@@ -100,7 +105,7 @@ module.exports = {
         fields: [
           {
             name: '📜 Channels',
-            value: `• **Welcome:** ${cfg.welcome_channel_id ? `<#${cfg.welcome_channel_id}>` : '*Not set*'}\n• **Announcements:** ${cfg.announcement_channel_id ? `<#${cfg.announcement_channel_id}>` : '*Not set*'}\n• **Goodbye:** ${cfg.goodbye_channel_id ? `<#${cfg.goodbye_channel_id}>` : '*Not set*'}\n• **Audit Logs:** ${cfg.log_channel_id ? `<#${cfg.log_channel_id}>` : '*Not set*'}\n• **Server Status:** ${cfg.status_channel_id ? `<#${cfg.status_channel_id}>` : '*Not set*'}\n• **Live Chat Bridge:** ${cfg.live_chat_channel_id ? `<#${cfg.live_chat_channel_id}>` : '*Not set*'}\n• **Movie Nights:** ${cfg.movie_channel_id ? `<#${cfg.movie_channel_id}>` : '*Not set*'}`,
+            value: `• **Welcome:** ${cfg.welcome_channel_id ? `<#${cfg.welcome_channel_id}>` : '*Not set*'}\n• **Announcements:** ${cfg.announcement_channel_id ? `<#${cfg.announcement_channel_id}>` : '*Not set*'}\n• **Advancements Showcase:** ${cfg.advancement_channel_id ? `<#${cfg.advancement_channel_id}>` : '*#live-chat (default)*'}\n• **Goodbye:** ${cfg.goodbye_channel_id ? `<#${cfg.goodbye_channel_id}>` : '*Not set*'}\n• **Audit Logs:** ${cfg.log_channel_id ? `<#${cfg.log_channel_id}>` : '*Not set*'}\n• **Server Status:** ${cfg.status_channel_id ? `<#${cfg.status_channel_id}>` : '*Not set*'}\n• **Live Chat Bridge:** ${cfg.live_chat_channel_id ? `<#${cfg.live_chat_channel_id}>` : '*Not set*'}\n• **Movie Nights:** ${cfg.movie_channel_id ? `<#${cfg.movie_channel_id}>` : '*Not set*'}`,
             inline: false
           },
           {
@@ -204,6 +209,14 @@ module.exports = {
       updateGuildConfig(guildId, 'announcement_channel_id', channel.id);
       return interaction.reply({
         embeds: [createSuccessEmbed('Announcement Channel Assigned', `Minecraft server launches and grand events will now be broadcast in ${channel}.`)]
+      });
+    }
+
+    if (subcommand === 'advancements') {
+      const channel = interaction.options.getChannel('channel');
+      updateGuildConfig(guildId, 'advancement_channel_id', channel.id);
+      return interaction.reply({
+        embeds: [createSuccessEmbed('Advancement Showcase Assigned', `Minecraft achievement celebration banners will now be showcased in ${channel}.`)]
       });
     }
 

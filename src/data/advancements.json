@@ -1,0 +1,277 @@
+{
+  "Stone Age": {
+    "type": "task",
+    "desc": "Mine stone with your new pickaxe",
+    "icon": "Wooden Pickaxe"
+  },
+  "Getting an Upgrade": {
+    "type": "task",
+    "desc": "Construct a better pickaxe",
+    "icon": "Stone Pickaxe"
+  },
+  "Acquire Hardware": {
+    "type": "task",
+    "desc": "Smelt an iron ingot",
+    "icon": "Iron Ingot"
+  },
+  "Suit Up": {
+    "type": "task",
+    "desc": "Protect yourself with a piece of iron armor",
+    "icon": "Iron Chestplate"
+  },
+  "Hot Stuff": {
+    "type": "task",
+    "desc": "Fill a bucket with lava",
+    "icon": "Lava Bucket"
+  },
+  "Isn't It Iron Pick": {
+    "type": "task",
+    "desc": "Upgrade your pickaxe",
+    "icon": "Iron Pickaxe"
+  },
+  "Not Today, Thank You": {
+    "type": "task",
+    "desc": "Deflect an arrow or projectile with a shield",
+    "icon": "Shield"
+  },
+  "Ice Bucket Challenge": {
+    "type": "task",
+    "desc": "Obtain a block of obsidian",
+    "icon": "Obsidian"
+  },
+  "Diamonds!": {
+    "type": "task",
+    "desc": "Acquire diamonds",
+    "icon": "Diamond"
+  },
+  "We Need to Go Deeper": {
+    "type": "task",
+    "desc": "Build, light and enter a Nether Portal",
+    "icon": "Flint and Steel"
+  },
+  "Cover Me with Diamonds": {
+    "type": "challenge",
+    "desc": "Diamond armor saves lives",
+    "icon": "Diamond Chestplate"
+  },
+  "Enchanter": {
+    "type": "task",
+    "desc": "Enchant an item at an Enchanting Table",
+    "icon": "Enchanting Table"
+  },
+  "Zombie Doctor": {
+    "type": "goal",
+    "desc": "Weaken and then cure a Zombie Villager",
+    "icon": "Golden Apple"
+  },
+  "Eye Spy": {
+    "type": "task",
+    "desc": "Follow an Eye of Ender",
+    "icon": "Eye of Ender"
+  },
+  "The End?": {
+    "type": "task",
+    "desc": "Enter the End Portal",
+    "icon": "End Stone"
+  },
+  "Free the End": {
+    "type": "challenge",
+    "desc": "Good luck",
+    "icon": "Dragon Head"
+  },
+  "The Next Generation": {
+    "type": "goal",
+    "desc": "Hold the Dragon Egg",
+    "icon": "Dragon Egg"
+  },
+  "Monster Hunter": {
+    "type": "task",
+    "desc": "Attack and destroy any hostile monster",
+    "icon": "Iron Sword"
+  },
+  "Monsters Hunted": {
+    "type": "challenge",
+    "desc": "Kill one of every hostile monster",
+    "icon": "Diamond Sword"
+  },
+  "Postmortal": {
+    "type": "goal",
+    "desc": "Use a Totem of Undying to cheat death",
+    "icon": "Totem of Undying"
+  },
+  "Subspace Bubble": {
+    "type": "challenge",
+    "desc": "Use the Nether to travel 7 km in the Overworld",
+    "icon": "Compass"
+  },
+  "A Furious Cocktail": {
+    "type": "challenge",
+    "desc": "Have every potion effect applied at the same time",
+    "icon": "Potion"
+  },
+  "How Did We Get Here?": {
+    "type": "challenge",
+    "desc": "Have every effect applied at the same time",
+    "icon": "Milk Bucket"
+  },
+  "Return to Sender": {
+    "type": "challenge",
+    "desc": "Destroy a Ghast with a fireball",
+    "icon": "Fire Charge"
+  },
+  "Into Fire": {
+    "type": "task",
+    "desc": "Relieve a Blaze of its rod",
+    "icon": "Blaze Rod"
+  },
+  "Local Brewery": {
+    "type": "task",
+    "desc": "Brew a potion",
+    "icon": "Brewing Stand"
+  },
+  "Spooky Scary Skeleton": {
+    "type": "task",
+    "desc": "Obtain a Wither Skeleton Skull",
+    "icon": "Wither Skeleton Skull"
+  },
+  "Withering Heights": {
+    "type": "task",
+    "desc": "Summon the Wither",
+    "icon": "Nether Star"
+  },
+  "Bring Home the Beacon": {
+    "type": "task",
+    "desc": "Construct and place a Beacon",
+    "icon": "Beacon"
+  },
+  "Beaconator": {
+    "type": "goal",
+    "desc": "Bring a beacon to full power",
+    "icon": "Beacon"
+  },
+  "Great View From Up Here": {
+    "type": "challenge",
+    "desc": "Levitate up 50 blocks from the attacks of a Shulker",
+    "icon": "Shulker Shell"
+  },
+  "Sky's the Limit": {
+    "type": "goal",
+    "desc": "Find elytra",
+    "icon": "Elytra"
+  },
+  "Sniper Duel": {
+    "type": "challenge",
+    "desc": "Kill a Skeleton with an arrow from more than 50 meters",
+    "icon": "Bow"
+  },
+  "Bullseye": {
+    "type": "challenge",
+    "desc": "Hit the bullseye of a Target block from at least 30 meters away",
+    "icon": "Target"
+  },
+  "Voluntary Exile": {
+    "type": "task",
+    "desc": "Kill a raid captain",
+    "icon": "Ominous Banner"
+  },
+  "Hero of the Village": {
+    "type": "challenge",
+    "desc": "Successfully defend a village from a raid",
+    "icon": "Emerald"
+  },
+  "Ol' Betsy": {
+    "type": "task",
+    "desc": "Shoot a crossbow",
+    "icon": "Crossbow"
+  },
+  "Two Birds, One Arrow": {
+    "type": "challenge",
+    "desc": "Kill two Phantoms with a piercing arrow",
+    "icon": "Crossbow"
+  },
+  "Arbalistic": {
+    "type": "challenge",
+    "desc": "Kill five unique mobs with one crossbow shot",
+    "icon": "Crossbow"
+  },
+  "Who is Cutting Onions?": {
+    "type": "task",
+    "desc": "Obtain crying obsidian",
+    "icon": "Crying Obsidian"
+  },
+  "Not Quite \"Nine\" Lives": {
+    "type": "task",
+    "desc": "Charge a Respawn Anchor to the maximum",
+    "icon": "Respawn Anchor"
+  },
+  "This Boat Has Legs": {
+    "type": "task",
+    "desc": "Ride a Strider with a Fungus on a Stick",
+    "icon": "Warped Fungus on a Stick"
+  },
+  "Country Lode, Take Me Home": {
+    "type": "task",
+    "desc": "Use a compass on a lodestone",
+    "icon": "Lodestone"
+  },
+  "Hidden in the Depths": {
+    "type": "task",
+    "desc": "Obtain ancient debris",
+    "icon": "Ancient Debris"
+  },
+  "Cover Me in Debris": {
+    "type": "challenge",
+    "desc": "Get a full suit of netherite armor",
+    "icon": "Netherite Chestplate"
+  },
+  "Serious Dedication": {
+    "type": "challenge",
+    "desc": "Use a Netherite Ingot to upgrade a hoe",
+    "icon": "Netherite Hoe"
+  },
+  "Crafter": {
+    "type": "task",
+    "desc": "Craft a Crafter",
+    "icon": "Crafter"
+  },
+  "Over-Overkill": {
+    "type": "challenge",
+    "desc": "Deal 50 hearts of damage in a single hit using the Mace",
+    "icon": "Mace"
+  },
+  "Revaulting": {
+    "type": "task",
+    "desc": "Unlock an Ominous Vault with an Ominous Trial Key",
+    "icon": "Ominous Trial Key"
+  },
+  "Blowback": {
+    "type": "challenge",
+    "desc": "Kill a Breeze with a deflected Wind Charge",
+    "icon": "Wind Charge"
+  },
+  "Sweet Dreams": {
+    "type": "task",
+    "desc": "Sleep in a bed to change your respawn point",
+    "icon": "Red Bed"
+  },
+  "Adventure": {
+    "type": "task",
+    "desc": "Adventure, exploration and combat",
+    "icon": "Iron Sword"
+  },
+  "Minecraft": {
+    "type": "task",
+    "desc": "The heart and story of the game",
+    "icon": "Grass Block"
+  },
+  "Nether": {
+    "type": "task",
+    "desc": "Bring summer clothes",
+    "icon": "Netherrack"
+  },
+  "The End": {
+    "type": "task",
+    "desc": "Or the beginning?",
+    "icon": "End Stone"
+  }
+}

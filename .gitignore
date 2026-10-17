@@ -7,7 +7,7 @@ node_modules/
 !.env.example
 
 # SQLite Database & server state
-data/
+/data/
 *.db
 *.db-wal
 *.db-shm

@@ -167,6 +167,7 @@ try { db.exec('ALTER TABLE movie_events ADD COLUMN director TEXT;'); } catch (e)
 try { db.exec('ALTER TABLE movie_events ADD COLUMN trailer_url TEXT;'); } catch (e) {}
 try { db.exec('ALTER TABLE movie_events ADD COLUMN overview TEXT;'); } catch (e) {}
 try { db.exec('ALTER TABLE guild_config ADD COLUMN announcement_channel_id TEXT;'); } catch (e) {}
+try { db.exec('ALTER TABLE guild_config ADD COLUMN advancement_channel_id TEXT;'); } catch (e) {}
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS minecraft_events (
